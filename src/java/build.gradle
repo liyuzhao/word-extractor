@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+repositories {
+   jcenter {
+       url "http://jcenter.bintray.com/"
+   }
+   maven {
+       url 'http://repo1.maven.org/maven2'
+   }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

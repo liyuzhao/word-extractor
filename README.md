@@ -22,4 +22,24 @@
 8. 在保证正确性的前提下尽量提高提取速度，比如避免 auto boxing/unboxing
 
 ## 会出现的代词
-`["do sth.", "do sth","sb.'s", "sth.", "sb.","sth", "sb", "one's", "somebody's", "somebody", "something"]`
+`["do sth.", "do sth","sb.'s", "sth.", "sb.","sth", "sb", "one's", "somebody's", "somebody", "something", "someone"]`
+
+## 实现
+
+### 关键点
+
++ #### 单词搜索
+    由于每个单词都要在词库搜索是否存在，所以最明显的性能瓶颈在这里。目前有几种数据结构比较适合
+    + `Hash Table`
+    + `Prefix Tree`
+    
++ #### 短语搜索
+    + `looking for` in `I'm looking for my wallet.`
+    + `do sb's best` in `do my best/do your best`
+    + (开启词态识别) `put on` in `putting on`
+
++ #### 特殊情况
+    + `something of` 要提取的是短语本身，而不能是 `... of`
+
++ #### 词态识别
+    如果开启词态识别，则将变形的单词转成原型后再提取，包括出现在短语中的单词。
